@@ -38,44 +38,28 @@ public class FrmClassifications extends JFrame {
 		
 		//TABLA DE DATOS
 		JScrollPane scroll = new JScrollPane();
-		DefaultTableModel dataTableModel = cargarTabla();
+		DefaultTableModel dataTableModel = new DefaultTableModel();
 		JTable dataTable = new JTable(dataTableModel);
 		dataTable.setEnabled(true);
 		dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		scroll.setViewportView(dataTable);
 		scroll.setBounds(20,50,755,400);
 		this.add(scroll);
-		
+		cargarTabla(dataTableModel);
 	}
 	
-	private DefaultTableModel cargarTabla()
+	private void cargarTabla(DefaultTableModel dtm)
 	{
-		 
 		AdaBoost ada = new AdaBoost();
 		ada.doAdaBoost();
-		ada.evaluateClassi();
 		System.out.println(ada.getEvaluationResultSummary());
-		
-		try {
-			System.out.println(ada.getEvluationResultDetails());
-			System.out.println(ada.getConfusionMatrix());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.out.println(ada.getConfusionMatrix());
 		
 		String[] columns = {"Clasificador","Precisión","Exactitud","Sensibilidad"};
-		/*for(int i=0;i<columns.length;i++)
+		for(int i=0;i<columns.length;i++)
 		{
 			dtm.addColumn(columns[i]);
-		}*/
-		
-		Object[][] tablecontent = {{"AdaBoost",ada.getPrecision(),ada.getExactitud(),ada.getPrecision()},
-								   {"NaiveBayes","","",""},
-								   {"ID3","","",""},
-								   {"RandomForest","","",""}};
-		System.out.println("ENTROOO");
-		return new DefaultTableModel(tablecontent,columns);
+		}
 		
 	}
 }

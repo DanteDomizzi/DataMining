@@ -13,7 +13,7 @@ import weka.classifiers.Classifier;
 public class Classifiers
 {
 	private Evaluation eval;
-	protected Classifier cls;
+	private Classifier cls;
 	
 	/**
 	 * METODO QUE EVALUA LOS CLASIFICADORES
@@ -58,19 +58,5 @@ public class Classifiers
 		return eval.toMatrixString();
 	}
 	
-	public Double getPrecision()
-	{
-		return eval.weightedPrecision();
-	}
-	
-	public Double getSencitivity()
-	{
-		return eval.weightedRecall();
-	}
-	
-	public Double getExactitud()
-	{
-		return eval.weightedFMeasure();
-	}
 	
 }

@@ -38,7 +38,8 @@ public class FrmClassifications extends JFrame {
 		
 		//TABLA DE DATOS
 		JScrollPane scroll = new JScrollPane();
-		DefaultTableModel dataTableModel = cargarTabla();
+		DefaultTableModel dataTableModel = null;
+		cargarTabla(dataTableModel);
 		JTable dataTable = new JTable(dataTableModel);
 		dataTable.setEnabled(true);
 		dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -48,9 +49,8 @@ public class FrmClassifications extends JFrame {
 		
 	}
 	
-	private DefaultTableModel cargarTabla()
+	private void cargarTabla(DefaultTableModel dtm)
 	{
-		 
 		AdaBoost ada = new AdaBoost();
 		ada.doAdaBoost();
 		ada.evaluateClassi();
@@ -74,8 +74,7 @@ public class FrmClassifications extends JFrame {
 								   {"NaiveBayes","","",""},
 								   {"ID3","","",""},
 								   {"RandomForest","","",""}};
-		System.out.println("ENTROOO");
-		return new DefaultTableModel(tablecontent,columns);
 		
+		dtm = new DefaultTableModel(tablecontent,columns);
 	}
 }

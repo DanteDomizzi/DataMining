@@ -74,7 +74,7 @@ public class FrmClassifications extends JFrame {
 								   {"NaiveBayes","","",""},
 								   {"ID3","","",""},
 								   {"RandomForest","","",""}};
-		System.out.println("ENTROOO");
+		
 		return new DefaultTableModel(tablecontent,columns);
 		
 	}

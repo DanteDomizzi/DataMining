@@ -27,7 +27,7 @@ public class AdaBoost extends Classifiers
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		super.cls = adaboost;
+		
 		//SE IMPRIMEN LOS RESULTADOS
 		System.out.println(adaboost);
 		
