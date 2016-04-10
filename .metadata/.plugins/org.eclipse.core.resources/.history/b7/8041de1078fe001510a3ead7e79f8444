@@ -1,0 +1,30 @@
+package weka.api;
+
+
+import weka.core.Instances;
+import weka.classifiers.bayes.NaiveBayes;
+
+public class HelloWeka {
+	public static void main(String[] args)
+	{
+		LoadSaveData lsd = new LoadSaveData();
+		Instances dataset = lsd.openCSV("/home/domizzi/Downloads/Telegram Desktop/bank/bank.csv");
+		System.out.println(dataset.toSummaryString());
+		System.out.println(dataset.stringFreeStructure());
+
+		
+		NaiveBayes nb = new NaiveBayes();
+		try 
+		{
+			nb.buildClassifier(dataset);
+		
+			System.out.println(nb);
+		}
+		catch (Exception e) 
+		{
+			System.out.println(e);
+		}
+		
+		
+	}
+}

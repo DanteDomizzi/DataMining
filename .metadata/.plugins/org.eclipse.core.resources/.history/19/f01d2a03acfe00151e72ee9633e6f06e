@@ -1,0 +1,36 @@
+package gui;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import weka.api.AssociationRules;
+
+
+@SuppressWarnings("serial")
+public class FrmAssociationRules extends JFrame
+{
+	
+	private static final String TITLE = "REGLAS DE ASOCIACIÓN";
+	private JLabel titulo;
+	
+	public FrmAssociationRules()
+	{
+		initElements();
+	}
+	
+	private void initElements()
+	{
+		//CREACIÓN DE LA VENTANA
+		this.setBounds(200,100,800,500);
+		this.setTitle(TITLE);
+		this.setVisible(true);
+		this.setResizable(false);
+		this.setLayout(null);
+		
+		
+		titulo = new JLabel("Algoritmo Naive Bayes");
+		titulo.setBounds(300,0,200,40);
+		this.add(titulo);
+		
+	}
+}

@@ -1,0 +1,19 @@
+package weka.api;
+
+import weka.core.Instances;
+import weka.filters.unsupervised.attribute.Normalize;
+import weka.filters.Filter;
+
+public class DataPreparation 
+{
+	public void normalization(Instances data)
+	{
+		Normalize norm =  new Normalize();
+		try{
+			norm.setInputFormat(data);
+			data = Filter.useFilter(data, norm);
+		}catch(Exception e){
+			System.out.println(e);
+		}
+	}
+}

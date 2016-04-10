@@ -1,0 +1,27 @@
+package weka.api;
+
+//WEKA PACKAGES
+import weka.core.Instances;
+
+import java.util.List;
+
+import weka.associations.Apriori;
+import weka.associations.AssociationRule;
+
+public class AssociationRules 
+{
+	public List<AssociationRule> getAprioriRules(Instances data)
+	{
+		Apriori model = new Apriori();
+		try {
+			model.setLowerBoundMinSupport(0.1);
+			model.setUpperBoundMinSupport(0.2);
+			model.buildAssociations(data);
+			//System.out.println(model.getAssociationRules().getNumRules());
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return model.getAssociationRules().getRules();
+	}
+}

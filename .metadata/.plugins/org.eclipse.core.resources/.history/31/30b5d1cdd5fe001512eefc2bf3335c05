@@ -1,0 +1,28 @@
+package weka.api.Classifiers;
+
+import weka.classifiers.meta.AdaBoostM1;
+
+public class AdaBoost 
+{
+	public void doAdaBoost()
+	{
+		String options[] = {"-P","90",
+							"-S","1",
+							"-I","5",
+							"-W","weka.classifiers.trees.DecisionStump",
+							"-D","True"};
+		AdaBoostM1 adaboost = new AdaBoostM1();
+		try {
+			adaboost.setOptions(options);
+			adaboost.buildClassifier(gui.MainClass.data);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		System.out.println(adaboost.getCapabilities().toString());
+		System.out.println(adaboost.globalInfo());
+		System.out.println(adaboost);
+		
+	}
+}

@@ -1,0 +1,17 @@
+package weka.api.classifiers;
+
+import weka.classifiers.evaluation.Evaluation;
+
+public class Classifier 
+{
+	public void evaluateClassi()
+	{
+		try {
+			Evaluation eval = new Evaluation(gui.MainClass.data);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+	}
+}

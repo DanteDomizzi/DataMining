@@ -1,0 +1,5 @@
+package weka.api.classifiers;
+
+public class Classifier {
+
+}

@@ -1,0 +1,37 @@
+package weka.api.classifiers;
+
+//JAVA PACKAGES
+import java.util.Random;
+
+//WEKA PACKAGES
+import weka.classifiers.evaluation.Evaluation;
+import weka.classifiers.Classifier;
+
+public class Classifiers
+{
+	
+	public String evaluateClassi(Classifier cls,boolean detail)
+	{
+		Evaluation eval = null; 
+		try 
+		{
+			eval = new Evaluation(gui.MainClass.data);
+			Random rand = new Random(1);
+			int folds = 10;
+			eval.crossValidateModel(cls, gui.MainClass.data, folds, rand);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		if(detail && eval!=null)
+			return eval.toSummaryString();
+		else if(!detail && eval!=null)
+			try {
+				return eval.toClassDetailsString();
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		else
+			return "ERROR";
+	}
+}

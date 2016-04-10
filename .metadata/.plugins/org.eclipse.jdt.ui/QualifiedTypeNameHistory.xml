@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="weka.core.converters.ArffSaver"/>
+<fullyQualifiedTypeName name="weka.core.converters.CSVLoader"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="javax.swing.JScrollBar"/>
+<fullyQualifiedTypeName name="weka.api.LoadSaveData"/>
+<fullyQualifiedTypeName name="weka.core.Instances"/>
+<fullyQualifiedTypeName name="javax.swing.JFileChooser"/>
+<fullyQualifiedTypeName name="weka.classifiers.meta.AdaBoostM1"/>
+<fullyQualifiedTypeName name="weka.classifiers.bayes.NaiveBayes"/>
+<fullyQualifiedTypeName name="weka.filters.unsupervised.attribute.Normalize"/>
+<fullyQualifiedTypeName name="gui.MainClass"/>
+<fullyQualifiedTypeName name="weka.classifiers.evaluation.Evaluation"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="weka.classifiers.Classifier"/>
+</qualifiedTypeNameHistroy>

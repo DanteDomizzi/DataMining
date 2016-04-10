@@ -1,0 +1,20 @@
+package weka.api;
+
+//WEKA PACKAGES
+import weka.core.Instances;
+import weka.associations.Apriori;
+
+public class AssociationRules 
+{
+	public void getAprioriRules(Instances data)
+	{
+		Apriori model = new Apriori();
+		try {
+			model.buildAssociations(data);
+			System.out.println(model.getAllTheRules());
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+	}
+}

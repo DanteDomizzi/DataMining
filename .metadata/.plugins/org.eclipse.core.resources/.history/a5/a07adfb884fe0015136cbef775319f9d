@@ -1,0 +1,78 @@
+package gui;
+
+//JAVA PACKAGES
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JTable;
+
+//WEKA PACKAGES
+import weka.core.Instances;
+import weka.api.LoadSaveData;
+
+@SuppressWarnings("serial")
+public class MainClass extends JFrame
+{
+	private static final String TITLE = "PROYECTO FINAL";
+	
+	private DefaultTableModel dataTableModel;
+	private JTable dataTable;
+	private Instances data;
+	private LoadSaveData lsd;
+	
+	
+	public MainClass()
+	{
+		lsd = new LoadSaveData();
+		data = lsd.openCSV("bank-full.csv");
+		initElements();
+	}
+	
+	private void initElements()
+	{
+		
+		//CREACIÓN DE LA VENTANA
+		this.setBounds(200,100,800,500);
+		this.setTitle(TITLE);
+		this.setVisible(true);
+		this.setResizable(false);
+		this.setLayout(null);
+		
+		//TABLA DE DATOS
+		JScrollPane scroll = new JScrollPane();
+		dataTableModel = new DefaultTableModel(lsd.getNames().toArray(),0);
+		dataTable = new JTable(dataTableModel);
+		dataTable.setEnabled(true);
+		dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		scroll.setViewportView(dataTable);
+		scroll.setBounds(20,100,400,150);
+		this.add(scroll);
+		loadData(dataTableModel);	
+	}
+	
+	/**
+	 * CARGA LOS DATOS EN LA TABLA
+	 * @param dtm	MODELO DE LA TABLA DONDE SE CARGARAN LOS DATOS
+	 */
+	private void loadData(DefaultTableModel dtm)
+	{
+		
+		Object[] dataRow = new Object[data.numAttributes()];
+		int contador = 0;
+		ArrayList<Integer> aux;
+
+		for (int i=0; i < data.numAttributes() ; i++) 
+		{
+			for(int j=0; j < data.numInstances(); j++)
+			{
+				data[i][j] = (j == 0) ?  nomFilas.get(i) : datos.get(j-1).get(i);
+			}
+			dtm.addRow(data[i]);
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		new MainClass();
+	}
+}

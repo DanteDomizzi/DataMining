@@ -1,0 +1,13 @@
+package weka.api;
+
+//WEKA PACKAGES
+import weka.core.Instances;
+import weka.associations.Apriori;
+
+public class AssociationRules 
+{
+	public void getAprioriRules(Instances data)
+	{
+		
+	}
+}

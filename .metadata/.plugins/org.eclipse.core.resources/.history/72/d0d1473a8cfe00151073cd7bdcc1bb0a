@@ -1,0 +1,89 @@
+package gui;
+
+//JAVA PACKAGES
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JTable;
+
+import weka.core.Instance;
+//WEKA PACKAGES
+import weka.core.Instances;
+import weka.api.LoadSaveData;
+
+@SuppressWarnings("serial")
+public class MainClass extends JFrame
+{
+	private static final String TITLE = "PROYECTO FINAL";
+	
+	private DefaultTableModel dataTableModel;
+	private JTable dataTable;
+	private Instances data;
+	private LoadSaveData lsd;
+	
+	
+	public MainClass()
+	{
+		lsd = new LoadSaveData();
+		data = lsd.openCSV("bank-full.csv");
+		initElements();
+	}
+	
+	private void initElements()
+	{
+		
+		//CREACIÓN DE LA VENTANA
+		this.setBounds(200,100,800,500);
+		this.setTitle(TITLE);
+		this.setVisible(true);
+		this.setResizable(false);
+		this.setLayout(null);
+		
+		//TABLA DE DATOS
+		JScrollPane scroll = new JScrollPane();
+		dataTableModel = new DefaultTableModel(lsd.getNames().toArray(),0);
+		dataTable = new JTable(dataTableModel);
+		dataTable.setEnabled(true);
+		dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		scroll.setViewportView(dataTable);
+		scroll.setBounds(20,100,500,350);
+		this.add(scroll);
+		loadData(dataTableModel);	
+	}
+	
+	/**
+	 * CARGA LOS DATOS EN LA TABLA
+	 * @param dtm	MODELO DE LA TABLA DONDE SE CARGARAN LOS DATOS
+	 */
+	private void loadData(DefaultTableModel dtm)
+	{
+		
+		Object[][] dataRow = new Object[data.numInstances()][data.numAttributes()];
+		
+		for(int i=0;i<data.numInstances();i++)
+		{
+			Instance ins = data.instance(i);
+			//System.out.println(ins.numValues());
+			for(int j=0;j<ins.numValues();j++)
+			{
+				if(ins.attribute(j).isNominal())
+				{
+					dataRow[i][j] = ins.stringValue(j);
+				}
+				else if(ins.attribute(j).isNumeric())
+				{
+					dataRow[i][j] = ins.value(j);
+				}
+				//System.out.println(dataRow[j]);
+			}
+			
+			dtm.addRow(dataRow[i]);
+			
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		new MainClass();
+	}
+}

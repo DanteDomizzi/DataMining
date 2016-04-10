@@ -1,0 +1,41 @@
+package weka.api.classifiers;
+
+//JAVA PACKAGES
+import java.util.Random;
+
+//WEKA PACKAGES
+import weka.classifiers.evaluation.Evaluation;
+import weka.classifiers.Classifier;
+
+public class Classifiers
+{
+	private Evaluation eval;
+	
+	public void evaluateClassi(Classifier cls)
+	{
+		try 
+		{
+			eval = new Evaluation(gui.MainClass.data);
+			Random rand = new Random(1);
+			int folds = 10;
+			eval.crossValidateModel(cls, gui.MainClass.data, folds, rand);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	public String getEvaluationResultSummary()
+	{
+		return eval.toSummaryString();
+	}
+	
+	public String getEvluationResultDetails() throws Exception
+	{
+		return eval.toClassDetailsString();
+	}
+	
+	public String getConfusionMatrix(Classifier cls) throws Exception
+	{
+		return eval.toMatrixString();
+	}
+}

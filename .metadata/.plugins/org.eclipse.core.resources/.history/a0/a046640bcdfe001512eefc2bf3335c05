@@ -1,0 +1,5 @@
+package weka.api.Classifiers;
+
+public class AdaBoost {
+
+}
